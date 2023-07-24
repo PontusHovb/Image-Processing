@@ -7,11 +7,17 @@
 <body>
     <h1 class="title">Page Title</h1>
     <div class="content">
-        <img id="imagePreview" src="" alt="No image selected">
+        <canvas id="imagePreview">Image failed to load.</canvas>
+    </div>
+    <div class="content">
+        <button id="blurImageButton">Blur Image</button>
+        <script src="JavaScript/convolution.js"></script>
+        
+        
     </div>
     <div class="content">
         <input type="file" id="imageInput">
-        <script src="image.js"></script>
+        <script src="JavaScript/image.js"></script>
     </div>
 </body>
 </html>

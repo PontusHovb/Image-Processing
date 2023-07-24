@@ -1,6 +1,6 @@
-
 const imageInput = document.getElementById('imageInput');
 const imagePreview = document.getElementById('imagePreview');
+const ctx = imagePreview.getContext('2d'); // Get the drawing context for the canvas
 
 imageInput.addEventListener('change', handleImageSelect);
 
@@ -11,10 +11,15 @@ function handleImageSelect(event) {
         const reader = new FileReader();
 
         reader.onload = function (event) {
-            imagePreview.src = event.target.result;
+            const img = new Image();
+            img.onload = function () {
+                imagePreview.width = img.width;
+                imagePreview.height = img.height;
+                ctx.drawImage(img, 0, 0); // Draw the image on the canvas
+            };
+            img.src = event.target.result;
         };
 
         reader.readAsDataURL(file);
     }
 }
-
