@@ -1,6 +1,6 @@
 const imageInput = document.getElementById('imageInput');
 const imagePreview = document.getElementById('imagePreview');
-const ctx = imagePreview.getContext('2d'); // Get the drawing context for the canvas
+const ctx = imagePreview.getContext('2d');
 
 imageInput.addEventListener('change', handleImageSelect);
 
