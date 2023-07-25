@@ -21,4 +21,4 @@ using Fuorier Transform. Solving for the original picture $I$ yields:
 $$FT(I)=\frac{FT(B)}{FT(H)}$$ 
 
 ## Sources:
-Kumar, Shashank (2002) (https://towardsdatascience.com/how-to-de-blur-images-without-training-neural-networks-72f8597c0014)
+Kumar, Shashank (2022) (https://towardsdatascience.com/how-to-de-blur-images-without-training-neural-networks-72f8597c0014)
