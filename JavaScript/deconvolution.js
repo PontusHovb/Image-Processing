@@ -2,6 +2,8 @@
 const deconvoluteButton = document.getElementById('deconvoluteImage');
 deconvoluteButton.addEventListener('click', deconvoluteImage);
 
+const fftjs = require('fft-js');
+
 // Deconvolute image using fourier transform
 function deconvoluteImage() {
     const imageMatrix = createImageMatrix()
@@ -10,6 +12,7 @@ function deconvoluteImage() {
 
 function createImageMatrix() {
     const imageData = ctx.getImageData(0, 0, imagePreview.width, imagePreview.height);
+    const pixels = imageData.data;
     const width = imageData.width;
     const height = imageData.height;
     const result = [];
@@ -21,7 +24,8 @@ function createImageMatrix() {
             let imagPart = 0;
             for (let y2 = 0; y2 < height; y2++) {
                 for (let x2 = 0; x2 < width; x2++) {
-                    const pixelValue = image[y2][x2]
+                    const pixelValue = pixels[y2][x2];
+                    console.log(pixelValue);
                     const phase = -2 * Math.PI * ((x * x2) / width + (y * y2)  / height);
                     realPart += pixelValue * Math.cos(phase);
                     imagPart += pixelValue * Math.sin(phase);
