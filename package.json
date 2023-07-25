@@ -1,0 +1,29 @@
+{
+  "name": "image-processing",
+  "version": "1.0.0",
+  "description": "Project for processing images",
+  "main": "index.js",
+  "dependencies": {
+    "bit-twiddle": "^1.0.2",
+    "commander": "^2.7.1",
+    "graceful-readlink": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "try"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PontusHovb/Image-Processing.git"
+  },
+  "keywords": [
+    "Convolution",
+    "Fourier-Transform"
+  ],
+  "author": "Pontus Hovberger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PontusHovb/Image-Processing/issues"
+  },
+  "homepage": "https://github.com/PontusHovb/Image-Processing#readme"
+}
