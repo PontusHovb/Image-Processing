@@ -1,8 +1,6 @@
 
 const blurImageButton = document.getElementById('blurImageButton');
-const unBlurImageButton = document.getElementById('unBlurImageButton');
 blurImageButton.addEventListener('click', blurImage);
-unBlurImageButton.addEventListener('click', unBlurImage);
 
 // PSF (Point Spread Function) matrix
 var PSF = createGaussianPSF(5, 1.5)
@@ -21,7 +19,7 @@ function createGaussianPSF(size, sigma) {
       PSF.push(row);
     }
   
-    // Normalize the PSF to ensure the sum of all elements is 1
+    // Normalize the PSF so that sum of all elements equals 1
     const total = PSF.reduce((acc, row) => acc + row.reduce((sum, val) => sum + val, 0), 0);
     for (let y = 0; y < size; y++) {
       for (let x = 0; x < size; x++) {
@@ -65,3 +63,6 @@ function blurImage() {
     }
     ctx.putImageData(imageData, 0, 0)
 }
+
+
+  
