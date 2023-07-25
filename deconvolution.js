@@ -1,5 +1,5 @@
 
-const fft = require('fft.js');const fft = require('fft.js');
+const fft = require('fft.js');
 
 const unBlurImageButton = document.getElementById('unBlurImageButton');
 unBlurImageButton.addEventListener('click', unBlurImage);
