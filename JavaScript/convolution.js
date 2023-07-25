@@ -1,10 +1,11 @@
 
-const blurImageButton = document.getElementById('blurImageButton');
-blurImageButton.addEventListener('click', blurImage);
+const convoluteButton = document.getElementById('convoluteImage');
+convoluteButton.addEventListener('click', convoluteImage);
 
 // PSF (Point Spread Function) matrix
-var PSF = createGaussianPSF(5, 1.5)
+const PSF = createGaussianPSF(5, 1.5)
 
+// Returns gaussian PSF of given size
 function createGaussianPSF(size, sigma) {
     const center = Math.floor(size / 2);
     const PSF = [];
@@ -30,7 +31,8 @@ function createGaussianPSF(size, sigma) {
     return PSF;
 }
 
-function blurImage() {
+// Convolute displayed image 
+function convoluteImage() {
     const imageData = ctx.getImageData(0, 0, imagePreview.width, imagePreview.height);
     const pixels = imageData.data;
     const width = imageData.width;

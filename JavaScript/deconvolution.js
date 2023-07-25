@@ -1,10 +1,17 @@
 
-const unBlurImageButton = document.getElementById('unBlurImageButton');
-unBlurImageButton.addEventListener('click', unBlurImage);
+const deconvoluteButton = document.getElementById('deconvoluteImage');
+deconvoluteButton.addEventListener('click', deconvoluteImage);
 
-function unBlurImage() {
-    const width = image[0].length;
-    const height = image.length;
+// Deconvolute image using fourier transform
+function deconvoluteImage() {
+    const imageMatrix = createImageMatrix()
+    console.log(imageMatrix)
+}
+
+function createImageMatrix() {
+    const imageData = ctx.getImageData(0, 0, imagePreview.width, imagePreview.height);
+    const width = imageData.width;
+    const height = imageData.height;
     const result = [];
 
     for (let y = 0; y < height; y++) {
