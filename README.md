@@ -1,5 +1,5 @@
 # Image-Processing
-This project explores different methods to alter and process images using convolution and deconvolution methods.
+This project explores different methods to alter and process images. These include convolution (blurring), grayscaling, mirroring.
 
 ## Grayscale
 Grayscales is a range of gray shades from white to black, all these color share that red = green = blue. There are several methods to convert colored images to grayscale, two of them are:
