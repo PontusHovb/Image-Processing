@@ -5,19 +5,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 class="title">Page Title</h1>
+    <h1 class="title" align="center">Image Processing</h1>
+    Project in JavaScript testing different functions and algorithms to alter images
     <div class="content">
         <canvas id="imagePreview">Image failed to load.</canvas>
     </div>
     <div class="content">
         <button id="convoluteImage">Blur Image</button>
         <button id="grayscaleImage">Grayscale Image</button>
+        <button id="mirrorImage">Mirror Image</button>
         <script type="module" src="JavaScript/convolution.js"></script>
         <script type="module" src="JavaScript/grayscale.js"></script>
+        <script type="module" src="JavaScript/mirror.js"></script>
     </div>
     <div class="content">
         <input type="file" id="imageInput">
         <script type="module" src="JavaScript/image.js"></script>
     </div>
+    <p align="right">Pontus Hovberger, 2023</p>
 </body>
 </html>
