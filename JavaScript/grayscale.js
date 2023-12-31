@@ -16,7 +16,7 @@ function image_to_grayscale ()
         var blue = pixels[i + 2];
 
         // Use average as grayscale intensity
-        var avg_color = (red + green + blue) / 3;
+        var avg_color = red / 3 + green / 3 + blue / 3;
 
         pixels[i] = avg_color;
         pixels[i + 1] = avg_color;
