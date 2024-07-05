@@ -2,9 +2,9 @@ const grayscaleButton = document.getElementById('grayscaleImage');
 grayscaleButton.addEventListener('click', grayscaleImage);
 
 const COLOR_WEIGHTS = {
-    red: 0.333,
-    green: 0.333,
-    blue: 0.333
+    red: 0.299,
+    green: 0.587,
+    blue: 0.114
 };
 
 /*
@@ -21,8 +21,8 @@ For luminosity method:
 
 function grayscaleImage ()
 {
-    const imageData = ctx.getImageData(0, 0, imagePreview.width, imagePreview.height);
-    const pixels = imageData.data;
+    let grayImage = ctx.getImageData(0, 0, imageWidth, imageHeight);
+    let pixels = grayImage.data;
 
     for (let i = 0; i < pixels.length; i++) {
         // Extract color of each pixel
@@ -37,5 +37,5 @@ function grayscaleImage ()
         pixels[i + 1] = avg_color;
         pixels[i + 2] = avg_color;
     }
-    ctx.putImageData(imageData, 0, 0);
+    ctx.putImageData(grayImage, 0, 0);
 }

@@ -3,29 +3,26 @@ mirrorButton.addEventListener('click', mirrorImage);
 
 function mirrorImage () 
 {
-    // Old image
-    const imageData = ctx.getImageData(0, 0, imagePreview.width, imagePreview.height);
-    const pixels = imageData.data;
-    const width = imageData.width;
-    const height = imageData.height;
+    if (originalImage) {
+        resetImage();
 
-    // Mirrored image
-    const mirroredimageData = ctx.createImageData(imagePreview.width, imagePreview.height);
-    const newPixels = mirroredimageData.data;
+        let mirroredImage = ctx.createImageData(imageWidth, imageHeight);
+        let pixels = mirroredImage.data;         
 
-    for (let row = 0; row < height; row++) 
-    {
-        for (let col = 0; col < width; col++)
+        for (let row = 0; row < imageHeight; row++) 
         {
-            var originalIndex = (row * width + col) * 4;
-            var mirroredIndex = (row * width + (width - col)) * 4;
+            for (let col = 0; col < imageWidth; col++)
+            {
+                var originalIndex = (row * imageWidth + col) * 4;
+                var mirroredIndex = (row * imageWidth + (imageWidth - col)) * 4;
 
-            // Copy pixel data to the new location
-            newPixels[mirroredIndex] = pixels[originalIndex];         // Red component
-            newPixels[mirroredIndex + 1] = pixels[originalIndex + 1]; // Green component
-            newPixels[mirroredIndex + 2] = pixels[originalIndex + 2]; // Blue component
-            newPixels[mirroredIndex + 3] = pixels[originalIndex + 3]; // Alpha component
+                // Copy pixel data to the new location
+                pixels[mirroredIndex] = originalPixels[originalIndex];         // Red component
+                pixels[mirroredIndex + 1] = originalPixels[originalIndex + 1]; // Green component
+                pixels[mirroredIndex + 2] = originalPixels[originalIndex + 2]; // Blue component
+                pixels[mirroredIndex + 3] = originalPixels[originalIndex + 3]; // Alpha component
+            }
         }
+        ctx.putImageData(mirroredImage, 0, 0);
     }
-    ctx.putImageData(mirroredimageData, 0, 0);
 }
