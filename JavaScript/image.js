@@ -40,4 +40,5 @@ function resetImage() {
     if (originalImage) {
         ctx.putImageData(originalImage, 0, 0);                                  // Restore the original image data
     }
+    zoomSlider.value = 1;
 }
