@@ -5,6 +5,10 @@ const ctx = imagePreview.getContext('2d');
 const imageInput = document.getElementById('imageInput');
 imageInput.addEventListener('change', handleImageSelect);
 
+// Remove image
+const removeButton = document.getElementById('removeImage');
+removeButton.addEventListener('click', removeImage);
+
 // Reset modifications
 const resetButton = document.getElementById('resetImage');
 resetButton.addEventListener('click', resetImage);   
@@ -14,6 +18,8 @@ let originalImage = null;
 let originalPixels = null;
 let imageWidth = null;
 let imageHeight = null;
+
+MAX_HEIGHT = 400;
 
 // Display image once it has been uploaded
 function handleImageSelect(event) {
@@ -46,6 +52,21 @@ function displayImage(imageSource) {
     };
     img.src = imageSource;
     imageInput.classList.add('hidden');
+}
+
+function resetOriginalImage() {
+    originalImage = null;
+    originalPixels = null;
+    imageWidth = null;
+    imageHeight = null;
+}
+
+function removeImage() {
+    if (originalImage) {
+        ctx.clearRect(0, 0, imageWidth, imageHeight);
+    }
+    resetOriginalImage();
+    imageInput.classList.remove('hidden');
 }
 
 function resetImage() {
