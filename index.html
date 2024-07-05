@@ -6,22 +6,47 @@
 </head>
 <body>
     <h1 class="title" align="center">Image Processing</h1>
+
     <div class="content">
         <i>Project in JavaScript testing different functions and algorithms to alter images</i>
+    </div>
+
+    <div class="content">
+        <input type="file" id="imageInput">
         <canvas id="imagePreview">Image failed to load.</canvas>
     </div>
-    <div class="button-container">
-        <button id="convoluteImage">Blur Image</button>
-        <button id="grayscaleImage">Grayscale Image</button>
-        <button id="mirrorImage">Mirror Image</button>
 
-        <label for="zoomSlider">Zoom: </label>
-        <input type="range" id="zoomSlider" min="1" max="3" step="0.1" value="1">
+    <div class="content">
+        <div class="button-container">
+            <label for="zoomSlider">Zoom: </label>
+            <input type="range" id="zoomSlider" min="1" max="3" step="0.1" value="1">
+        </div>
+        
+        <!-- Process image -->
+        <div class="button-container">
+            Process image:
+            <button id="convoluteImage">Blur</button>
+            <button id="grayscaleImage">Gray</button>
+            <button id="mirrorImage">Mirror</button>
+            <!-- TODO: Flip image -->
+        </div>
+        
+        <!-- Modify image -->
+        <div class="button-container">
+            Modify image:
+            <button id="unConvoluteImage">Sharpen</button>
+            <!-- TODO: Remove background -->
+        </div>
+
+        <!-- Save image -->
+        <div class="button-container">
+            Save image:
+            <!-- TODO: Save image -->
+            <!-- TODO: Remove image -->
+            <button id="resetImage">Reset modifications</button>
+        </div>
     </div>
-    <div class="button-container">
-        <button id="resetImage">Reset Image</button>
-        <input type="file" id="imageInput">
-    </div>
+    
     <p align="right">Pontus Hovberger, 2024</p>
 
     <!-- Scripts -->
