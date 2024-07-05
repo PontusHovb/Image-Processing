@@ -1,53 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Processing</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 class="title" align="center">Image Processing</h1>
+    <header>
+        <h1 class="title">Image Processing</h1>
+        <p class="subtitle">Project in JavaScript for image processing</p>
+    </header>
 
-    <div class="content">
-        <i>Project in JavaScript testing different functions and algorithms to alter images</i>
-    </div>
+    <main>
+        <section class="upload-section">
+            <input type="file" id="imageInput">
+            <label for="imageInput" class="upload-label">Upload Image</label>
+            <canvas id="imagePreview" class="image-canvas">Image failed to load.</canvas>
+        </section>
 
-    <div class="content">
-        <input type="file" id="imageInput">
-        <canvas id="imagePreview">Image failed to load.</canvas>
-    </div>
+        <section class="controls">
+            <div class="control-group">
+                <label for="zoomSlider">Zoom: </label>
+                <input type="range" id="zoomSlider" min="1" max="3" step="0.1" value="1">
+            </div>
+            
+            <div class="control-group">
+                <span>Process image:</span>
+                <button id="convoluteImage">Blur</button>
+                <button id="grayscaleImage">Gray</button>
+                <button id="mirrorImage">Mirror</button>
+                <button id="resetImage">Reset</button>
+            </div>
 
-    <div class="content">
-        <div class="button-container">
-            <label for="zoomSlider">Zoom: </label>
-            <input type="range" id="zoomSlider" min="1" max="3" step="0.1" value="1">
-        </div>
-        
-        <!-- Process image -->
-        <div class="button-container">
-            Process image:
-            <button id="convoluteImage">Blur</button>
-            <button id="grayscaleImage">Gray</button>
-            <button id="mirrorImage">Mirror</button>
-            <!-- TODO: Flip image -->
-        </div>
-        
-        <!-- Modify image -->
-        <div class="button-container">
-            Modify image:
-            <button id="unConvoluteImage">Sharpen</button>
-            <!-- TODO: Remove background -->
-        </div>
+            <div class="control-group">
+                <span>Modify image:</span>
+                <button id="unConvoluteImage">Sharpen</button>
+            </div>
 
-        <!-- Uploaded image -->
-        <div class="button-container">
-            Uploaded image:
-            <button id="saveImage">Save image</button>
-            <button id="removeImage">Remove image</button>
-            <button id="resetImage">Reset modifications</button>
-        </div>
-    </div>
-    
-    <p align="right">Pontus Hovberger, 2024</p>
+            <div class="control-group">
+                <span>Uploaded image:</span>
+                <button id="saveImage">Save</button>
+                <button id="removeImage">Remove</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Pontus Hovberger, 2024</p>
+    </footer>
 
     <!-- Scripts -->
     <script src="JavaScript/image.js"></script>

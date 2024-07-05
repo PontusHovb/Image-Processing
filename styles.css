@@ -1,23 +1,120 @@
-.content {
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    color: #333;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    font-size: 2em;
+}
+
+.subtitle {
+    margin-top: 5px;
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+main {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: 10px 0;
+    padding: 20px;
 }
 
-.button-container {
+.upload-section {
     display: flex;
-    gap: 5px;
-    justify-content: center;
-    margin-top: 10px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.upload-label {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 #imageInput {
-    position: absolute;
+    display: none;
 }
 
-#imageInput.hidden {
+.image-canvas.hidden {
+    display: none
+}
+
+.upload-label.hidden {
     display: none;
+}
+
+.upload-label:hover {
+    background-color: #0056b3;
+}
+
+canvas {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.control-group {
+    gap: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.control-group span {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.control-group button,
+.control-group input[type="range"] {
+    margin: 5px 0;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.control-group button {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.control-group button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #007BFF;
+    color: #fff;
+    text-align: right;
+    padding: 10px 20px;
 }

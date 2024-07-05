@@ -25,6 +25,7 @@ let imageWidth = null;
 let imageHeight = null;
 
 MAX_HEIGHT = 400;
+document.querySelector('.image-canvas').classList.add('hidden');
 
 // Display image once it has been uploaded
 function handleImageSelect(event) {
@@ -57,7 +58,8 @@ function displayImage(imageSource) {
         imageHeight = img.height;
     };
     img.src = imageSource;
-    imageInput.classList.add('hidden');
+    document.querySelector('.image-canvas').classList.remove('hidden');
+    document.querySelector('.upload-label').classList.add('hidden');
 }
 
 function resetOriginalImage() {
@@ -81,12 +83,14 @@ function saveImage() {
     }
 }
 
+// TODO: Bug, still displays despite removed
 function removeImage() {
     if (originalImage) {
         ctx.clearRect(0, 0, imageWidth, imageHeight);
     }
     resetOriginalImage();
-    imageInput.classList.remove('hidden');
+    document.querySelector('.image-canvas').classList.add('hidden');
+    document.querySelector('.upload-label').classList.remove('hidden');
 }
 
 function resetImage() {
