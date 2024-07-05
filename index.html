@@ -6,22 +6,25 @@
 </head>
 <body>
     <h1 class="title" align="center">Image Processing</h1>
-    Project in JavaScript testing different functions and algorithms to alter images
     <div class="content">
+        <i>Project in JavaScript testing different functions and algorithms to alter images</i>
         <canvas id="imagePreview">Image failed to load.</canvas>
     </div>
-    <div class="content">
+    <div class="button-container">
         <button id="convoluteImage">Blur Image</button>
         <button id="grayscaleImage">Grayscale Image</button>
         <button id="mirrorImage">Mirror Image</button>
-        <script type="module" src="JavaScript/convolution.js"></script>
-        <script type="module" src="JavaScript/grayscale.js"></script>
-        <script type="module" src="JavaScript/mirror.js"></script>
     </div>
-    <div class="content">
+    <div class="button-container">
+        <button id="resetImage">Reset Image</button>
         <input type="file" id="imageInput">
-        <script type="module" src="JavaScript/image.js"></script>
     </div>
-    <p align="right">Pontus Hovberger, 2023</p>
+    <p align="right">Pontus Hovberger, 2024</p>
+
+    <!-- Scripts -->
+    <script src="JavaScript/image.js"></script>
+    <script src="JavaScript/convolution.js"></script>
+    <script src="JavaScript/grayscale.js"></script>
+    <script src="JavaScript/mirror.js"></script>
 </body>
 </html>
