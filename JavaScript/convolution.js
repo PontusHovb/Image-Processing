@@ -1,10 +1,12 @@
 const convoluteButton = document.getElementById('convoluteImage');
+const unConvoluteButton = document.getElementById('unConvoluteImage');
 convoluteButton.addEventListener('click', convoluteImage);
+unConvoluteButton.addEventListener('click', unConvoluteImage);
 
-// PSF (Point Spread Function) matrix
-const PSF = createGaussianPSF(5, 1.5)
+PSF_MATRIX_SIZE = 10;
+CONVOLUTE_FACTOR = 8;
 
-// Returns gaussian PSF of given size
+// Returns gaussian PSF (Point Spread Function) of given size
 function createGaussianPSF(size, sigma) {
     const center = Math.floor(size / 2);
     const PSF = [];
@@ -32,27 +34,29 @@ function createGaussianPSF(size, sigma) {
 
 // Convolute displayed image 
 function convoluteImage() {
-    const imageData = ctx.getImageData(0, 0, imagePreview.width, imagePreview.height);
-    const pixels = imageData.data;
-    const width = imageData.width;
-    const height = imageData.height;
-    const half = Math.floor(PSF.length / 2);
+  if (originalImage) {
+    resetImage();
+    const PSF = createGaussianPSF(PSF_MATRIX_SIZE, CONVOLUTE_FACTOR);
+    const half = Math.floor(PSF_MATRIX_SIZE / 2);
 
-    for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-            const pixelIndex = (y * width + x) * 4;
+    let convolutedImage = ctx.createImageData(imageWidth, imageHeight);
+    let pixels = convolutedImage.data;
+    
+    for (let y = 0; y < imageHeight; y++) {
+        for (let x = 0; x < imageWidth; x++) {
+            const pixelIndex = (y * imageWidth + x) * 4;
             let r = 0, g = 0, b = 0;
 
-            for (let j = 0; j < PSF.length; j++) {
-                for (let i = 0; i < PSF[j].length; i++) {
+            for (let j = 0; j < PSF_MATRIX_SIZE; j++) {
+                for (let i = 0; i < PSF_MATRIX_SIZE; i++) {
                     const xIndex = x + i - half;
                     const yIndex = y + j - half;
 
-                    if (xIndex >= 0 && xIndex < width && yIndex >= 0 && yIndex < height) {
-                        const neighborIndex = (yIndex * width + xIndex) * 4;
-                        r += pixels[neighborIndex] * PSF[j][i];
-                        g += pixels[neighborIndex + 1] * PSF[j][i];
-                        b += pixels[neighborIndex + 2] * PSF[j][i];
+                    if (xIndex >= 0 && xIndex < imageWidth && yIndex >= 0 && yIndex < imageHeight) {
+                        const neighborIndex = (yIndex * imageWidth + xIndex) * 4;
+                        r += originalPixels[neighborIndex] * PSF[j][i];
+                        g += originalPixels[neighborIndex + 1] * PSF[j][i];
+                        b += originalPixels[neighborIndex + 2] * PSF[j][i];
                     }
                 }
             }
@@ -60,10 +64,15 @@ function convoluteImage() {
             pixels[pixelIndex] = r;
             pixels[pixelIndex + 1] = g;
             pixels[pixelIndex + 2] = b;
+            pixels[pixelIndex + 3] = originalPixels[pixelIndex + 3];
         }
     }
-    ctx.putImageData(imageData, 0, 0)
+    
+    ctx.putImageData(convolutedImage, 0, 0);
+  }
 }
 
-
-  
+// TODO: Fix this to not affect other variables
+function unConvoluteImage() {
+  ctx.putImageData(originalImage, 0, 0);
+}
