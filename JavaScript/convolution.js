@@ -1,8 +1,4 @@
-
 const convoluteButton = document.getElementById('convoluteImage');
-const imagePreview = document.getElementById('imagePreview');       
-const ctx = imagePreview.getContext('2d');    
-
 convoluteButton.addEventListener('click', convoluteImage);
 
 // PSF (Point Spread Function) matrix

@@ -1,10 +1,7 @@
 const mirrorButton = document.getElementById('mirrorImage');
-const imagePreview = document.getElementById('imagePreview');       
-const ctx = imagePreview.getContext('2d');  
+mirrorButton.addEventListener('click', mirrorImage);
 
-mirrorButton.addEventListener('click', mirror_image);
-
-function mirror_image () 
+function mirrorImage () 
 {
     // Old image
     const imageData = ctx.getImageData(0, 0, imagePreview.width, imagePreview.height);

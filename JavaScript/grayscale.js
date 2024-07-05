@@ -1,8 +1,5 @@
 const grayscaleButton = document.getElementById('grayscaleImage');
-const imagePreview = document.getElementById('imagePreview');       
-const ctx = imagePreview.getContext('2d');  
-
-grayscaleButton.addEventListener('click', image_to_grayscale);
+grayscaleButton.addEventListener('click', grayscaleImage);
 
 const COLOR_WEIGHTS = {
     red: 0.333,
@@ -22,7 +19,7 @@ For luminosity method:
     blue: 0.114
 */
 
-function image_to_grayscale ()
+function grayscaleImage ()
 {
     const imageData = ctx.getImageData(0, 0, imagePreview.width, imagePreview.height);
     const pixels = imageData.data;
