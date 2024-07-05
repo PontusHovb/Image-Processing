@@ -5,6 +5,10 @@ const ctx = imagePreview.getContext('2d');
 const imageInput = document.getElementById('imageInput');
 imageInput.addEventListener('change', handleImageSelect);
 
+// Save image
+const saveButton = document.getElementById('saveImage');
+saveButton.addEventListener('click', saveImage);
+
 // Remove image
 const removeButton = document.getElementById('removeImage');
 removeButton.addEventListener('click', removeImage);
@@ -14,6 +18,7 @@ const resetButton = document.getElementById('resetImage');
 resetButton.addEventListener('click', resetImage);   
 
 // Initialize variacles
+let uploadedImage = null;
 let originalImage = null;
 let originalPixels = null;
 let imageWidth = null;
@@ -45,6 +50,7 @@ function displayImage(imageSource) {
         ctx.drawImage(img, 0, 0);                                           // Draw the image on the canvas
 
         // Set constants
+        uploadedImage = "Yes";
         originalImage = ctx.getImageData(0, 0, img.width, img.height); 
         originalPixels = originalImage.data;
         imageWidth = img.width;
@@ -55,10 +61,24 @@ function displayImage(imageSource) {
 }
 
 function resetOriginalImage() {
+    uploadedImage = null;
     originalImage = null;
     originalPixels = null;
     imageWidth = null;
     imageHeight = null;
+}
+
+// TODO: Handle multiple file formats
+function saveImage() {
+    if (uploadedImage) {
+        const dataURL = imagePreview.toDataURL('image/jpeg');
+                
+        // Create a link element and trigger download
+        const link = document.createElement('a');
+        link.href = dataURL;
+        link.download = 'image.jpeg';
+        link.click();
+    }
 }
 
 function removeImage() {
